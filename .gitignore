@@ -7,3 +7,8 @@ venv/
 dist/
 build/
 s_check.json
+.coverage
+htmlcov/
+coverage.xml
+.ruff_cache/
+.pytest_cache/
