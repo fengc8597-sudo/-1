@@ -26,7 +26,7 @@ jobs:
         run: python -m compileall -q jira_assistant
 
       - name: Run tests
-        run: python -m pytest -q
+        run: PYTHONPATH=. python -m pytest -q
 
       # 依赖/安全扫描（可选开关）
       - name: Scan dependencies (optional)
