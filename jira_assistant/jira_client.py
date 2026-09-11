@@ -23,7 +23,7 @@ class JiraClient:
         self._base_url = config.base_url
         self._session = requests.Session()
         token = base64.b64encode(
-            f"{config.email}:{config.api_token}".encode("utf-8")
+            f"{config.email}:{config.api_token}".encode()
         ).decode("utf-8")
         self._session.headers.update(
             {"Authorization": f"Basic {token}", "Accept": "application/json"}
@@ -39,7 +39,8 @@ class JiraClient:
 
     def get_issue(self, issue_key: str) -> dict:
         url = f"{self._base_url}/rest/api/3/issue/{issue_key}"
-        resp = self._session.get(url, params={"fields": "summary,issuetype,status,project,assignee,duedate,description"}, timeout=10)
+        fields = "summary,issuetype,status,project,assignee,duedate,description"
+        resp = self._session.get(url, params={"fields": fields}, timeout=10)
         self._raise_for_status(resp, issue_key)
         return resp.json()
 

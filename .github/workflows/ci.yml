@@ -20,13 +20,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt pytest
+          pip install -r requirements.txt pytest ruff pytest-cov
 
       - name: Compile check
         run: python -m compileall -q jira_assistant
 
-      - name: Run tests
-        run: PYTHONPATH=. python -m pytest -q
+      - name: Lint (ruff)
+        run: ruff check jira_assistant tests
+
+      - name: Run tests with coverage
+        run: PYTHONPATH=. pytest --cov=jira_assistant --cov-report=term-missing --cov-fail-under=80
 
       # 依赖/安全扫描（可选开关）
       - name: Scan dependencies (optional)

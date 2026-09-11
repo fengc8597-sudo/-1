@@ -1,5 +1,7 @@
 # Jira 智能助手（MCP Server）
 
+[![CI](https://github.com/fengc8597-sudo/-1/workflows/CI/badge.svg)](https://github.com/fengc8597-sudo/-1/actions)
+
 业务场景智能助手，将 **Jira 工单查询**封装为 MCP 工具，供 GienCoder / AI 助手通过 stdio 调用。
 需求来源：Jira SCRUM-2「实现业务场景智能助手能力」。
 

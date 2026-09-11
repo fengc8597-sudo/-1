@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "业务场景智能助手：将 Jira 工单查询封装为 MCP 工具，供 AI 调用。"
 requires-python = ">=3.9"
 dependencies = [
-    "mcp>=1.0.0",
+    "mcp>=1.0.0,<2",
     "requests>=2.31",
 ]
 
@@ -17,3 +17,17 @@ jira-assistant = "jira_assistant.server:main"
 
 [tool.setuptools.packages.find]
 include = ["jira_assistant*"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+extend-exclude = ["__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
